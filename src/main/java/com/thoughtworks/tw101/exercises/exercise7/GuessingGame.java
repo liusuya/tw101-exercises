@@ -19,13 +19,11 @@ public class GuessingGame {
         int guess = listener.getNextInt();
         boolean win = false;
 
-
         //make sure the number is within range
         if (guess > MAX_GUESS_NUM || guess < MIN_GUESS_NUM) {
             System.out.println("Number must be between 1 and 100. Please enter a valid number.");
             return win;
         }
-
 
         if (guess > answer) {
             System.out.println("Your answer is too high.");
@@ -38,7 +36,6 @@ public class GuessingGame {
         } else {
             System.out.println("Please enter a whole number between 1 and 100 inclusive.");
         }
-
 
         return win;
     }
