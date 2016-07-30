@@ -1,25 +1,22 @@
 package com.thoughtworks.tw101.exercises.exercise7;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 /**
  * Created by Suya on 2016-07-29.
  */
 public class GuessingGame {
 
     private int answer;
-    private Scanner reader;
+    private Listener listener;
     private static final int MAX_GUESS_NUM = 100;
     private static final int MIN_GUESS_NUM = 1;
 
     public GuessingGame() {
         System.out.println("Starting a new Guessing Game.");
+        listener = new Listener();
         answer = (int) (Math.random()*100 + 1);
     }
 
     private boolean getAndCheckGuess(){
-        int guess = reader.nextInt();
+        int guess = listener.getNextInt();
         boolean win = false;
 
 
@@ -46,9 +43,8 @@ public class GuessingGame {
         return win;
     }
 
-    public void playGame(Scanner reader) {
+    public void playGame() {
 
-        this.reader = reader;
         boolean win = false;
 
         System.out.println("Please guess a whole number between 1 and 100 inclusive.");

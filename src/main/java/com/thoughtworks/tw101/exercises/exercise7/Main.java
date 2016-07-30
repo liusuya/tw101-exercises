@@ -17,16 +17,9 @@ public class Main {
 
     private static void playGuessingGame() {
 
-        try {
 
-            Scanner reader = new Scanner(System.in);
-            GuessingGame game = new GuessingGame();
-
-            game.playGame(reader);
-
-        } catch (InputMismatchException e) {
-            System.out.println("You have entered an invalid response. Game ended prematurely. \n");
-        }
+        GuessingGame game = new GuessingGame();
+        game.playGame();
 
     }
 }
