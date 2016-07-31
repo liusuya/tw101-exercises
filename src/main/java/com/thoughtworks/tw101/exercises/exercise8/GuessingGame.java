@@ -1,11 +1,15 @@
-package com.thoughtworks.tw101.exercises.exercise7;
+package com.thoughtworks.tw101.exercises.exercise8;
+
+import java.util.ArrayList;
+
 /**
- * Created by Suya on 2016-07-29.
+ * Created by Suya on 2016-07-30.
  */
 public class GuessingGame {
 
     private int answer;
     private Listener listener;
+    private ArrayList<Integer> guesses;
     private static final int MAX_GUESS_NUM = 100;
     private static final int MIN_GUESS_NUM = 1;
 
@@ -13,10 +17,12 @@ public class GuessingGame {
         System.out.println("Starting a new Guessing Game.");
         listener = new Listener();
         answer = (int) (Math.random()*100 + 1);
+        guesses = new ArrayList<Integer>();
     }
 
     private boolean getAndCheckGuess(){
         int guess = listener.getNextInt();
+        guesses.add(guess); //do we want to only save the numbers that are within 1-100?
         boolean win = false;
 
         //make sure the number is within range
@@ -31,7 +37,6 @@ public class GuessingGame {
             System.out.println("Your answer is too low.");
         } else if (guess == answer) {
             System.out.println("You have guessed the right answer!");
-            System.out.println("You Win! \n");
             win = true;
         } else {
             System.out.println("Please enter a whole number between 1 and 100 inclusive.");
@@ -48,7 +53,11 @@ public class GuessingGame {
         while (!win) {
             win = getAndCheckGuess();
         }
+        System.out.println("You guessed the following numbers:");
+        for (int guess:guesses) {
+            System.out.print(guess + " ");
+        }
+        System.out.println("\nYou Win! \n");
 
     }
-
 }
