@@ -32,6 +32,36 @@ public class FizzBuzz {
     }
 
     private static void fizzBuzz() {
+        int number = 1;
+        boolean passedATest = false;
 
+        for (; number <= 100; number++) {
+            if (fizzTest(number)) {
+                System.out.print("Fizz");
+                passedATest = true;
+            }
+            if (buzzTest(number)) {
+                System.out.print("Buzz");
+                passedATest = true;
+            }
+            if (!passedATest)
+                System.out.print(number);
+
+            System.out.print("\n");
+            passedATest = false;
+        }
+
+    }
+
+    private static boolean fizzTest(int num) {
+        if (num%3 == 0)
+            return true;
+        return false;
+    }
+
+    private static boolean buzzTest(int num) {
+        if (num%5 == 0)
+            return true;
+        return false;
     }
 }
