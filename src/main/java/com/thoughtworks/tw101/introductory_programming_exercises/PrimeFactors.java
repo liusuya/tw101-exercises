@@ -20,14 +20,12 @@ public class PrimeFactors {
         int maxCheckedNum = (int) Math.sqrt(n);
 
         for (int divisor = 2; divisor <= maxCheckedNum; divisor++) {
-            //check if number is divisible first by the divisor
-            if (isDivisible(n, divisor)) {
-                //check if the divisor is prime
+            if (isDivisible(n, divisor))
                 if (isPrime(divisor))
                     factors.add(divisor);
-            }
         }
-        //check to see if number itself is prime
+        //have to check to see if number itself is prime
+        //because the optimization with maxCheckedNum removed the number it self
         if (isPrime(n))
             factors.add(n);
 

@@ -23,7 +23,7 @@ public class DiamondExercises {
     private static void drawAShiftedIsoscelesTriangle(int n, int shift) {
 
         for (int row = 1; row <= n; row++){
-            drawSpaces(shift);
+            drawChars(' ', shift);
             drawCenteredRow(n, row);
         }
     }
@@ -31,7 +31,7 @@ public class DiamondExercises {
     //the shift will move the entire triangle shift spaces to the right
     private static void drawAShiftedUpsidedownIsosceleseTriangle(int n, int shift) {
         for (int row = n; row > 0; row--) {
-            drawSpaces(shift);
+            drawChars(' ', shift);
             drawCenteredRow(n, row);
         }
     }
@@ -39,23 +39,28 @@ public class DiamondExercises {
     private static void drawCenteredRow(int n, int row) {
         //print the leading spaces
         for (int col = 1; col <= n-row; col++){
-            drawSpaces(1);
+            drawChar(' ');
         }
         //print the stars
         for (int col = 1; col <= numStars(row); col++){
-            System.out.print("*");
+            drawChar('*');
         }
-        System.out.print("\n");
+        drawChar('\n');
     }
 
     private static int numStars(int row) {
         return row*2 - 1;
     }
 
-    private static void drawSpaces(int numSpaces) {
-        for (int space = 0; space < numSpaces; space++)
-            System.out.print(" ");
+    private static void drawChars(char character, int numChars) {
+        for (int i = 0; i < numChars; i++)
+            drawChar(character);
     }
+
+    private static void drawChar(char character){
+        System.out.print(character);
+    }
+
 
 //    Diamond
 //    Given a number n, print a centered diamond. Example for n=3:
