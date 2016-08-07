@@ -34,11 +34,9 @@ public class GuessingGame {
             System.out.println("Your answer is too high.");
         } else if (guess < answer) {
             System.out.println("Your answer is too low.");
-        } else if (guess == answer) {
+        } else {
             System.out.println("You have guessed the right answer!");
             win = true;
-        } else {
-            System.out.println("Please enter a whole number between 1 and 100 inclusive.");
         }
 
         return win;
@@ -62,7 +60,5 @@ public class GuessingGame {
             win = checkGuess(guess);
         }
         printGuesses();
-        System.out.println("\nYou Win! \n");
-
     }
 }
