@@ -20,16 +20,15 @@ public class GuessingGame {
         guesses = new ArrayList<Integer>();
     }
 
-    private boolean getAndCheckGuess(){
+    private int getGuess() {
         int guess = listener.getNextInt();
-        guesses.add(guess); //do we want to only save the numbers that are within 1-100?
-        boolean win = false;
+        guesses.add(guess);
+        return guess;
+    }
 
-        //make sure the number is within range
-        if (guess > MAX_GUESS_NUM || guess < MIN_GUESS_NUM) {
-            System.out.println("Number must be between 1 and 100. Please enter a valid number.");
-            return win;
-        }
+    private boolean checkGuess(int guess){
+
+        boolean win = false;
 
         if (guess > answer) {
             System.out.println("Your answer is too high.");
@@ -45,18 +44,24 @@ public class GuessingGame {
         return win;
     }
 
+    private void printGuesses() {
+        System.out.println("You guessed the following numbers:");
+        for (int currGuess:guesses) {
+            System.out.print(currGuess + " ");
+        }
+    }
+
     public void playGame() {
 
         boolean win = false;
+        int guess;
 
         System.out.println("Please guess a whole number between 1 and 100 inclusive.");
         while (!win) {
-            win = getAndCheckGuess();
+            guess = getGuess();
+            win = checkGuess(guess);
         }
-        System.out.println("You guessed the following numbers:");
-        for (int guess:guesses) {
-            System.out.print(guess + " ");
-        }
+        printGuesses();
         System.out.println("\nYou Win! \n");
 
     }
